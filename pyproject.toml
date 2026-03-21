@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mobmrp"
+version = "0.1.0"
+description = "Correct socioeconomic bias in mobile phone mobility data using Multilevel Regression and Poststratification"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Leo Ferres" },
+]
+keywords = ["MRP", "CDR", "mobility", "bias correction", "Bayesian", "multilevel model", "poststratification"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+]
+
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "bambi>=0.13",
+    "pymc>=5.10",
+    "arviz>=0.17",
+    "scikit-learn>=1.3",
+    "packaging",
+]
+
+[project.optional-dependencies]
+numpyro = ["numpyro>=0.13", "jax>=0.4"]
+dev = ["pytest", "pytest-cov", "ruff"]
+
+[project.urls]
+Repository = "https://github.com/leoferres/mobmrp"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mobmrp"]
+
+[tool.ruff]
+line-length = 99
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

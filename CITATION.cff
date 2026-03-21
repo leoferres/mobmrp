@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying paper."
+title: "mobmrp: Correcting Socioeconomic Bias in Mobile Phone Mobility Estimates Using MRP"
+version: 0.1.0
+license: MIT
+type: software
+authors:
+  - family-names: Ferres
+    given-names: Leo
+preferred-citation:
+  type: article
+  title: "Correcting Socioeconomic Bias in Mobile Phone Mobility Estimates Using Multilevel Regression and Poststratification"
+  authors:
+    - family-names: Ferres
+      given-names: Leo
+  year: 2026
+  status: preprint
