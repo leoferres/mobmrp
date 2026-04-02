@@ -30,7 +30,7 @@ def build_poststrat_frame(
 
         * ``fine_geographic_unit`` identifier
         * ``geographic_unit`` identifier (parent unit)
-        * ``"total_pop"`` -- total population (households or persons)
+        * ``"total_pop"`` -- total population (number of persons in the area)
         * one column per socioeconomic level holding the **proportion**
           of that level in the area
 

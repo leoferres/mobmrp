@@ -9,6 +9,7 @@ from pathlib import Path
 
 import arviz as az
 import bambi as bmb
+import numpy as np
 import pandas as pd
 
 from mobmrp.config import MRPConfig
@@ -77,7 +78,21 @@ def fit_mrp_model(
     if formula is None:
         formula = config.formula or build_formula(config)
 
-    model = bmb.Model(formula, cell_data)
+    # Weight cells by n_users: sigma_i = sigma_0 / sqrt(n_users_i).
+    # Equivalent to case-weighted regression; cells with more users
+    # contribute proportionally more to the likelihood.
+    if "n_users" in cell_data.columns:
+        cell_data = cell_data.copy()
+        cell_data["_log_inv_sqrt_n"] = -0.5 * np.log(cell_data["n_users"])
+        bmb_formula = bmb.Formula(formula, "sigma ~ 1 + offset(_log_inv_sqrt_n)")
+    else:
+        warnings.warn(
+            "Column 'n_users' not found in cell_data; fitting unweighted model.",
+            stacklevel=2,
+        )
+        bmb_formula = formula
+
+    model = bmb.Model(bmb_formula, cell_data)
 
     # Choose inference method: prefer numpyro if available
     method = config.inference_method
