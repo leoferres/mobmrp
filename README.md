@@ -177,9 +177,10 @@ config = MRPConfig(
 @unpublished{ferres2026mobmrp,
   title={Correcting Socioeconomic Bias in Mobile Phone Mobility Estimates
          Using Multilevel Regression and Poststratification},
-  author={Ferres, Leo},
+  author={Ferres, Leo and Gauvin, Laetitia},
   year={2026},
-  note={Working paper}
+  note={Working paper},
+  doi={https://doi.org/10.5281/zenodo.19610660}
 }
 ```
 
